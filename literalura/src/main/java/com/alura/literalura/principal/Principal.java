@@ -4,18 +4,28 @@ import com.alura.literalura.model.Autor;
 import com.alura.literalura.model.Datos;
 import com.alura.literalura.model.DatosLibros;
 import com.alura.literalura.model.Libro;
+import com.alura.literalura.repository.LibrosRepository;
 import com.alura.literalura.service.ConsumoAPI;
 import com.alura.literalura.service.ConvierteDatos;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.Scanner;
 
+@Service
 public class Principal
 {
     private final String URL_BASE = "https://gutendex.com/books/";
     private final ConsumoAPI consumoApi = new ConsumoAPI();
     private final ConvierteDatos conversor = new ConvierteDatos();
     private final Scanner entradaDelTeclado = new Scanner(System.in);
+    private LibrosRepository librosRepository;
+
+    @Autowired
+    public Principal(LibrosRepository libroRepository) {
+        this.librosRepository = libroRepository;
+    }
 
     public void mostrarMenu()
     {
@@ -79,7 +89,11 @@ public class Principal
 
     private void comprabarExistenciaEnDB(Libro libro)
     {
-
+        Libro libroBuscado = librosRepository.buscarLibro(libro.getTitulo());
+        if(libroBuscado == null)
+            System.out.println("No existe en la BD");
+        else
+            System.out.println("Existe en la BD");
     }
 
     private void buscarLibroPorTitulo()
