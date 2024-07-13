@@ -1,5 +1,6 @@
-package com.alura.literalura.model;
+package com.alura.literalura.entity;
 
+import com.alura.literalura.model.DatosLibros;
 import jakarta.persistence.*;
 
 @Entity

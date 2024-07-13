@@ -1,5 +1,6 @@
-package com.alura.literalura.model;
+package com.alura.literalura.entity;
 
+import com.alura.literalura.model.DatosAutor;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -65,5 +66,15 @@ public class Autor {
 
     public void setLibros(List<Libro> libros) {
         this.libros = libros;
+    }
+
+    @Override
+    public String toString() {
+
+        return "*********** Autor ***********\n" +
+                "Nombre: " + nombre + "\n" +
+                "Fecha de Nacimiento: " + fechaDeNacimiento + "\n" +
+                "Fecha de Muerte: " + fechaDeMuerte + "\n" +
+                "Libros: " + libros  + "\n";
     }
 }
