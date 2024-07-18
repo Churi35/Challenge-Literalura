@@ -12,3 +12,4 @@ Literalura es una aplicacion gestora de un repositorio de libros en la cual se p
 * Spring 3.3.1 (con dependecias JPA, PostgreSQL y Jackson)
 * PostgreSQL
  
+<img src="badge literalura.png"> 
